@@ -1,0 +1,6 @@
+lint:
+	go fmt ./...
+run: lint
+	go run main.go
+test: lint
+	go test ./...
