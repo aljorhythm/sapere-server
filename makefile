@@ -12,13 +12,13 @@ test: lint
 SERVICE_HOST ?= localhost:8080
 
 build-image: test
-	CI_PLAT=$(CI_PLAT) sh .build_image.sh
+	CI_PLAT=$(CI_PLAT) sh .build_image.sh || (echo "build-image failed $$?"; exit 1)
 run-container:
-	CI_PLAT=$(CI_PLAT) sh .run_container.sh
+	CI_PLAT=$(CI_PLAT) sh .run_container.sh || (echo "run-container failed $$?"; exit 1)
 service-test:
 	(cd service_tests && make test SERVICE_HOST=$(SERVICE_HOST)) || (echo "service-test failed $$?"; exit 1)
 stop-container:
-	CI_PLAT=$(CI_PLAT) sh .stop_container.sh
+	CI_PLAT=$(CI_PLAT) sh .stop_container.sh || (echo "stop-container failed $$?"; exit 1)
 publish-image:
-	CI_PLAT=$(CI_PLAT) sh .publish_image.sh
+	CI_PLAT=$(CI_PLAT) sh .publish_image.sh || (echo "publish-image failed $$?"; exit 1)
 all: build-image run-container service-test stop-container publish-image
