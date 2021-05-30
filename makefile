@@ -1,4 +1,4 @@
-ENV ?= localhost
+CI_PLAT ?= local
 
 lint:
 	go fmt ./... || (echo "lint failed $$?"; exit 1)
@@ -12,12 +12,13 @@ test: lint
 SERVICE_HOST ?= localhost:8080
 
 build-image: test
-	ENV=$(ENV) sh .build_image.sh
-run-container: build-image
-	ENV=$(ENV) sh .run_container.sh
+	CI_PLAT=$(CI_PLAT) sh .build_image.sh
+run-container:
+	CI_PLAT=$(CI_PLAT) sh .run_container.sh
 service-test:
 	(cd service_tests && make test SERVICE_HOST=$(SERVICE_HOST)) || (echo "service-test failed $$?"; exit 1)
 stop-container:
-	ENV=$(ENV) sh .stop_container.sh
+	CI_PLAT=$(CI_PLAT) sh .stop_container.sh
 publish-image:
-	ENV=$(ENV) sh .publish_image.sh
+	CI_PLAT=$(CI_PLAT) sh .publish_image.sh
+all: build-image run-container service-test stop-container publish-image
