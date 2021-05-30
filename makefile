@@ -1,4 +1,4 @@
-ENV ?= not-trusted
+ENV ?= localhost
 
 lint:
 	go fmt ./... || (echo "lint failed $$?"; exit 1)
@@ -19,5 +19,5 @@ service-tests:
 	(cd service_tests && make test SERVICE_HOST=$(SERVICE_HOST)) || (echo "service-test failed $$?"; exit 1)
 stop-container:
 	ENV=$(ENV) sh .stop_container.sh
-publish-image: service-tests
+publish-image:
 	ENV=$(ENV) sh .publish_image.sh

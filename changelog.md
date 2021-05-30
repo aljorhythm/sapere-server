@@ -4,6 +4,7 @@
 - add start server log
 - add makefile build, test, run and containerize steps
 - add github action
+- publish image to dockerhub
 
 ## Practices, Principles and Philosophy
 
@@ -17,6 +18,7 @@ see ppp.md
 
 - service test framework
 - database
+- release steps
 
 ## References
 
