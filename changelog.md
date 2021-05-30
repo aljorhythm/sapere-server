@@ -3,6 +3,7 @@
 - add this changelog file
 - add start server log
 - add makefile build, test, run and containerize steps
+- add github action
 
 ## Practices, Principles and Philosophy
 
