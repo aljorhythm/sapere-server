@@ -15,7 +15,7 @@ build-image: test
 	ENV=$(ENV) sh .build_image.sh
 run-container: build-image
 	ENV=$(ENV) sh .run_container.sh
-service-tests:
+service-test:
 	(cd service_tests && make test SERVICE_HOST=$(SERVICE_HOST)) || (echo "service-test failed $$?"; exit 1)
 stop-container:
 	ENV=$(ENV) sh .stop_container.sh
