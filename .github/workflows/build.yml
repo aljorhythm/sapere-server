@@ -5,7 +5,7 @@ on:
       - "change/**"
 
 jobs:
-  checks:
+  check_and_publish:
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
@@ -16,15 +16,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Lint, unit test
         run: make test
-  publish:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v1
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v1
       - name: Login to DockerHub
-        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_USERNAME }}
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: Run Container
         run: ENV=github-actions make run-container
       - name: Service Test
