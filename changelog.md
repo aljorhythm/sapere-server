@@ -18,7 +18,8 @@ see ppp.md
 
 - service test framework
 - database
-- release steps
+- deployment
+- release github action steps
 
 ## References
 
@@ -27,3 +28,4 @@ see ppp.md
 - https://stackoverflow.com/questions/2826029/passing-additional-variables-from-command-line-to-make
 - https://www.shellscript.sh/exitcodes.html
 - https://github.com/mvdan/github-actions-golang
+- https://docs.docker.com/docker-hub/repos/

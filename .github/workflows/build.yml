@@ -5,7 +5,7 @@ on:
       - "change/**"
 
 jobs:
-  docker:
+  checks:
     runs-on: ubuntu-latest
     steps:
       - name: Install Go
@@ -15,7 +15,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Lint, unit test
-        run: ENV=github-actions make test
+        run: make test
+  publish:
+    runs-on: ubuntu-latest
+    steps:
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       - name: Set up Docker Buildx
@@ -25,5 +28,9 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: publish
+      - name: Run Container
+        run: ENV=github-actions make run-container
+      - name: Service Test
+        run: ENV=github-actions make service-test
+      - name: Publish to Dockerhub
         run: ENV=github-actions make publish-image
