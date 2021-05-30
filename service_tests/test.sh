@@ -1,0 +1,4 @@
+SERVICE_HOST=$1
+echo $SERVICE_HOST
+curl -v $SERVICE_HOST
+exit $?

@@ -1,0 +1,15 @@
+# Runs on main branch
+
+name: Main
+on:
+  push:
+    branches:
+      - "main"
+jobs:
+  retag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Login to DockerHub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+      - name: Add Tag to Dockerhub
+        run: CI_PLAT=g-actions make publish-image
