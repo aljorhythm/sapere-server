@@ -19,8 +19,8 @@ jobs:
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: Run Container
-        run: ENV=github-actions make run-container
+        run: ENV=ci make run-container
       - name: Service Test
-        run: ENV=github-actions make service-test
+        run: ENV=ci make service-test
       - name: Publish to Dockerhub
-        run: ENV=github-actions make publish-image
+        run: ENV=ci make publish-image
