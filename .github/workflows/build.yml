@@ -17,11 +17,13 @@ jobs:
       - name: Lint, unit test
         run: make test
       - name: Build
-        run: CI_PLAT=g-actions make build
+        run: CI_PLAT=g-actions make build-image
       - name: Run Container
         run: CI_PLAT=g-actions make run-container
       - name: Service Test
         run: CI_PLAT=g-actions make service-test
+      - name: Stop container
+        run: CI_PLAT=g-actions make stop-container
       - name: Login to DockerHub
         run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
       - name: Publish to Dockerhub
