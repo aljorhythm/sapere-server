@@ -13,7 +13,7 @@ should be kept to a minimum. fundamentally discrete steps should be replicable i
 
 Examples
 - github action config uses `make` commands already in the repository
-- naming of artefacts according to environment can be configured with arguments
+- naming of artefacts according to CI source
 
 ## changelog
 
