@@ -1,7 +1,9 @@
 # Readme
 
 add writing and docs
-sneak minor change for github action branch matcher to include all branches except `main`
+sneak 
+- minor change for github action branch matcher to include all branches except `main`
+- checkout step for main branch
 
 # Dockerize
 
