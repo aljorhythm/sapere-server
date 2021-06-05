@@ -2,7 +2,7 @@ name: Release candidate
 on:
   push:
     branches:
-      - "change/**"
+      - '!main'
 
 jobs:
   check_and_publish:
