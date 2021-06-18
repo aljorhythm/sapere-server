@@ -17,7 +17,7 @@ run-container:
 	CI_PLAT=$(CI_PLAT) sh .run_container.sh || (echo "run-container failed $$?"; exit 1)
 service-test:
 	(cd servicetests && make test SERVICE_HOST=$(SERVICE_HOST)) || (echo "service-test failed $$?"; exit 1)
-	SERVICE_HOST=$(SERVICE_HOST) go test $(go list ./... | grep -v /servicetests/) || (echo "test failed $$?"; exit 1)
+	SERVICE_HOST=$(SERVICE_HOST) go test $$(go list ./... | grep -v /servicetests) || (echo "test failed $$?"; exit 1)
 stop-container:
 	CI_PLAT=$(CI_PLAT) sh .stop_container.sh || (echo "stop-container failed $$?"; exit 1)
 publish-image:
