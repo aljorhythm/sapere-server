@@ -5,7 +5,7 @@ lint:
 run: lint
 	go run .
 test: lint
-	go test $(go list ./... | grep -v /servicetests/) || (echo "test failed $$?"; exit 1)
+	go test $$(go list ./... | grep -v /servicetests) || (echo "test failed $$?"; exit 1)
 
 # containers
 
