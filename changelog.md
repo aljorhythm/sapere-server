@@ -1,3 +1,38 @@
+# Interfaces, Code Structure, Modelling and Service Tests
+
+## Interfaces
+
+- In Go, callers instead of callees specify interfaces
+- Clear separation of Data, Business layers
+
+## Service Tests
+
+- Decided to go with `golang` for integrations
+  
+### Cons
+
+- Static typing is not very useful for asserting service level json responses
+- Sort of in the same location as source - bad practices can contaminate test code with assumptions from source code
+- verbose
+
+### Pros
+
+- Strongly typing is useful in the future for testing gRPC/GraphQL endpoints
+- Although strongly and statically typed, liberal use of maps is allowed
+- Easy to write, maybe some strong typing can help
+- No need to manage another framework/language in CI, can use same tools for linting etc..
+- http is already a package
+- also supports concurrency which would be a problem in `python`
+
+## Conservative use of pointers
+
+- todo link
+
+## References
+
+- https://stackoverflow.com/questions/44864790/why-cant-i-use-a-pointer-to-a-specific-type-where-interface-is-expected
+- https://stackoverflow.com/questions/30652577/go-doing-a-get-request-and-building-the-querystring
+
 # Readme
 
 add writing and docs
