@@ -78,3 +78,7 @@ pom.xml.tag
 
 branches.md
 *.tmp
+
+.commit
+.branch
+.ci_plat
