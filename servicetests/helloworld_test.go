@@ -7,14 +7,12 @@ import (
 
 func Test_HelloWorld(t *testing.T) {
 	helper := testHttpHelper.get("/", url.Values{})
-	value, err := helper.bodyString()
 
-	if err != nil {
-		t.Error(err)
-	}
+	value := helper.bodyString()
 
 	expected := "Hi there, you are visiting !"
-	if value != expected {
-		t.Errorf("expected '%s', got '%s'", expected, value)
+
+	if *value != expected {
+		t.Errorf("expected '%s', got '%s'", expected, *value)
 	}
 }

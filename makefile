@@ -3,7 +3,7 @@ CI_PLAT ?= local
 lint:
 	go fmt ./... || (echo "lint failed $$?"; exit 1)
 run: lint
-	go run main.go
+	go run .
 test: lint
 	go test $(go list ./... | grep -v /servicetests/) || (echo "test failed $$?"; exit 1)
 

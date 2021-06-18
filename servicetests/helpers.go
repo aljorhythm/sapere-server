@@ -18,30 +18,37 @@ type HttpHelper struct {
 
 type HttpResponseHelper struct {
 	response *http.Response
-	error    error
+	bytes    *[]byte
 }
 
-func (h HttpResponseHelper) bodyString() (string, error) {
+func (h *HttpResponseHelper) bodyString() *string {
 	bodyBytes, err := h.bodyBytes()
 	if err != nil {
-		return "", err
+		return nil
 	}
-	return string(bodyBytes), err
+	str := string(bodyBytes)
+	return &str
 }
 
 func (h HttpResponseHelper) status() int {
 	return h.response.StatusCode
 }
 
-func (h HttpResponseHelper) bodyBytes() ([]byte, error) {
+func (h *HttpResponseHelper) bodyBytes() ([]byte, error) {
+	if h.bytes != nil {
+		return *h.bytes, nil
+	}
+
 	bodyBytes, err := ioutil.ReadAll(h.response.Body)
 	if err != nil {
 		return []byte{}, err
 	}
-	return bodyBytes, err
+
+	h.bytes = &bodyBytes
+	return *h.bytes, err
 }
 
-func (h HttpResponseHelper) json(obj interface{}) error {
+func (h *HttpResponseHelper) json(obj interface{}) error {
 	bytes, err := h.bodyBytes()
 
 	if err != nil {

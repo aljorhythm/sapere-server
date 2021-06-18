@@ -1,19 +1,25 @@
 package servicetests
 
 import (
-	"fmt"
 	"net/url"
 	"testing"
 )
 
 func Test_User1(t *testing.T) {
-	helper := testHttpHelper.get("/", url.Values{})
+	helper := testHttpHelper.get("/user1", url.Values{})
 
 	response := struct {
+		Id   int64  `json:"id"`
+		Name string `json:"name"`
 	}{}
 
-	p := &response
-	helper.json(p)
+	helper.json(&response)
 
-	fmt.Println(p)
+	if response.Id != 1 {
+		t.Errorf("Expected id to be 1 %s", *helper.bodyString())
+	}
+
+	if response.Name != "John" {
+		t.Errorf("Expected name to be John")
+	}
 }
