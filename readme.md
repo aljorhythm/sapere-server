@@ -42,7 +42,7 @@ Life is Short. Filter Noise.
 ## Principles & Practices
 
 - [x] Production and development environment application build parity
-- [x] Unit testing
+- [] Unit testing
 - [] Automated test report notification
   
 ### Monitoring
