@@ -4,6 +4,15 @@
 
 - In Go, callers instead of callees specify interfaces
 - Clear separation of Data, Business layers
+    - Data has it's view of a `User`, Business has it's view of a `User`
+
+### Cons
+
+- Super explicit, from a non-Go style perspective there's a lot of duplicate code
+
+### Pros
+
+- Somewhat like domain driven design but applied vertically, this design forces each layer to be explicit about what it assumes.
 
 ## Service Tests
 
