@@ -1,8 +1,5 @@
-name: Release candidate
-on:
-  push:
-    branches-ignore:
-      - main
+name: Build
+on: push
 
 jobs:
   check_and_publish:
