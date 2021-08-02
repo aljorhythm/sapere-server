@@ -56,9 +56,11 @@ func (h BaseHandler) User(w http.ResponseWriter, r *http.Request) {
 
 func (h BaseHandler) Ping(w http.ResponseWriter, r *http.Request) {
 	pingResponse := struct {
-		Up bool `json:"up"`
+		Up    bool  `json:"up"`
+		Build Build `json:"build"`
 	}{
-		Up: true,
+		Up:    true,
+		Build: getBuildInfo(),
 	}
 
 	err := json.NewEncoder(w).Encode(pingResponse)
