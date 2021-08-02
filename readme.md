@@ -11,25 +11,33 @@ Life is Short. Filter Noise.
 
 ## Language / Framework / System
 
-- [] File structure
+- [x] [File structure](docs/file_structure.md)
   
 ## Golang
 
-- [] Mocking interface of decoupled package
-- [] Mocking with library
 - [] Database connections
+  - [] Transactions
 - [] Go Embed
-    - serving commit hash
+    - [] serving commit hash
+  
+### Testing
+
+- [] [Mocking interface of decoupled package](data/inmemory)
+- [] Mocking with library
+
+### Third party packages
+
+- [] testify
   
 ## Protocols
 
 - [] gRPC
 - [] graphQL
-- [] http
+- [x] http
 
 ### Service Test
 
-- [] Choose framework first
+- [x] Choose framework first (golang)
 
 ## Principles & Practices
 
