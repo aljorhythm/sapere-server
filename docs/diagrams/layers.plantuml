@@ -1,0 +1,73 @@
+@startuml
+
+title Illustration of layers
+
+participant Consumer order 0
+participant Routing order 10
+participant Business order 20
+participant Data order 30
+database Database order 40
+
+Consumer -> Routing: GET /user
+
+note over Routing, Business
+    package business
+    struct User {
+        id `json:"id"`
+        name `json:"string"`
+    }
+end note
+Routing -> Business: GetUser() business.User
+
+note over Business
+   package model
+   type User interface {
+        GetId() int64
+        GetName() string
+   }
+end note
+Business -> Data: GetUser() model.User
+
+note over Data, Database
+    package data
+    type User struct {
+        id int64 `bson:"id"`
+        name string `bson:"name"`
+    }
+    func User GetId() int64
+    func User GetName() string
+end note
+Data -> Database
+
+note over Data, Database
+    user := struct User {
+        id: 1
+        name: "John"
+    }
+end note
+Data <- Database
+
+note over Business, Data
+    user
+end note
+Business <- Data
+
+Business -> Business: convert(user) business.User
+
+note over Routing, Business
+    struct User {
+        id: 1
+        name: "John"
+    }
+end note
+Routing <- Business
+
+note over Consumer, Routing
+    json
+    {
+        "id": 1, "name": "John"
+    }
+end note
+Consumer <- Routing
+
+@enduml
