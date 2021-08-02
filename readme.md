@@ -1,6 +1,6 @@
 # Socialised Knowledge Sharing
 
-![main](https://github.com/aljorhythm/sapere-server/actions/workflows/main.yml/badge.svg?branch=main)
+![main](https://github.com/aljorhythm/sapere-server/actions/workflows/build.yml/badge.svg?branch=main)
 
 Life is Short. Filter Noise.
 
