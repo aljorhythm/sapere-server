@@ -24,7 +24,7 @@ Life is Short. Filter Noise.
   
 ### Testing
 
-- [] [Mocking interface of decoupled package](data/inmemory)
+- [] [Mocked implementation interface](data/inmemory)
 - [] Mocking with library
 
 ### Third party packages
