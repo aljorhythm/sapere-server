@@ -17,24 +17,24 @@ Life is Short. Filter Noise.
   
 ## Golang
 
-[] Database connections
-  [] Transactions
-[] Go Embed
-  [] serving commit hash
+[ ] Database connections
+  [ ] Transactions
+[ ] Go Embed
+  [ ] serving commit hash
   
 ### Testing
 
-[] [Mocked implementation interface](data/inmemory)
-[] Mocking with library
+[ ] [Mocked implementation interface](data/inmemory)
+[ ] Mocking with library
 
 ### Third party packages
 
-[] testify
+[ ] testify
   
 ## Protocols
 
-[] gRPC
-[] graphQL
+[ ] gRPC
+[ ] graphQL
 [x] http
 
 ### Service Test
@@ -44,14 +44,14 @@ Life is Short. Filter Noise.
 ## Principles & Practices
 
 [x] Production and development environment application build parity
-[] Unit testing
-[] Automated test report notification
+[ ] Unit testing
+[ ] Automated test report notification
   
 ### Monitoring
 
-[] Serve commit hash
-[] Serve health endpoint
+[ ] Serve commit hash
+[ ] Serve health endpoint
 
 ## Wishlist
 
-[] Service Discovery
+[ ] Service Discovery
